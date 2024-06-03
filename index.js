@@ -11,9 +11,9 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    res.send("Welcome to the start")
+    res.send("Welcome to the start 2")
 });
 
 app.listen(port, () => {
-  console.log(`Proxy server listening at http://localhost:${port}`);
+  console.log(`Proxy server listening at ${port}`);
 });

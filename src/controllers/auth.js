@@ -6,7 +6,7 @@ dotenv.config();
 
 const client=new OAuth2Client();
 const clientID = process.env.CLIENT_ID;
-const jwtSecret= process.env.JWT_SECRET
+const jwtSecret= process.env.JWT_SECRET;
 
 const loginUser =async(tokenId)=>{
     const ticket = await client.verifyIdToken({

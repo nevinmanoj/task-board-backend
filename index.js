@@ -1,4 +1,6 @@
 import authRoutes from "./src/routes/auth.js";
+import taskRoutes from "./src/routes/tasks.js";
+import verifyRoute from "./src/routes/verify.js"
 import express  from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -15,12 +17,15 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
-
+app.get('/welcome', (req, res) => {
+  res.send("Welcome to the start")
+});
 app.use("/auth", authRoutes);
 
-app.get('/', (req, res) => {
-    res.send("Welcome to the start")
-});
+app.use("/", verifyRoute);
+app.use("/task",taskRoutes);
+
+
 
 mongoose
   .connect(process.env.MONGO_URI, {

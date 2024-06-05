@@ -11,8 +11,7 @@ router.use((req, res, next) => {
     }
     const token = authHeader.split(' ')[1]; 
     try {   
-        const accessToken = jwt.sign({ userID:"nevin123" }, jwtSecret, { expiresIn: '1d' }); 
-        const decoded = jwt.verify(accessToken, jwtSecret);
+        const decoded = jwt.verify(token, jwtSecret);
         req.decoded = decoded;  
         next();
     } catch (error) {

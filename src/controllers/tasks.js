@@ -17,7 +17,7 @@ const addTask = async (req,res) => {
     const userID=req.decoded.userID;
     const newTask = new TaskSchema( { title,desc,addedDate,completionDate,isCompleted,userID });
     await newTask.save();
-    res.status(200).json({ message: 'Task add success'});
+    res.status(200).json({ message: 'Task add success',data:newTask});
 } catch (error) {
     res.status(401).json({ message: 'Task add failed' ,error});
 }
@@ -35,7 +35,7 @@ const modifyTask=async(req,res)=>{
         }else{
           Object.assign(taskfromDb, {title,desc,addedDate,completionDate,isCompleted,userID});
           await taskfromDb.save();
-          res.status(200).json({ message: 'Task modify success'});
+          res.status(200).json({ message: 'Task modify success',data:taskfromDb});
         }
     } catch (error) {
         res.status(404).json({ message: 'Task modify failed'});
